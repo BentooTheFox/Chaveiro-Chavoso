@@ -76,6 +76,14 @@ def cancelar_operacao():
 clear = lambda: system("cls" if name == "nt" else "clear")
 
 
+
+def criar_em_massa(quantidade = 25):
+    for _ in range(quantidade):
+        gerenciamento_de_dados.inserir_login(
+            ( gerar_nickname(), gerar_senha(True),)
+            )
+    gerenciamento_de_dados.salvar()
+
 def iniciar_loop():
     clear()
     print(
@@ -147,4 +155,5 @@ def iniciar_loop():
     artista_artoso.reset()
 
     return tela.Tela.PRINCIPAL
+
 

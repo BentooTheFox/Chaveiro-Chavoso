@@ -52,28 +52,29 @@ def gerar_nickname():
     return nick
 
 
-def gerar_senha():
-    usr = None
-    tamanho = ""
+def gerar_senha(auto=False):
+    usr = None if not auto else "cadeia"
+    tamanho = "" if not auto else 12
 
-    while usr not in ("pin", "cadeia", ""):
-        usr = (
-            input(
-                "Perfeito! Agora, deseja um PIN (apenas números) ou cadeia de caracteres (senha forte).\nEscreva 'pin' para PIN ou deixe em branco para gerar uma cadeia >> "
+    if not auto:
+
+        while usr not in ("pin", "cadeia", ""):
+            usr = (
+                input(
+                    "Perfeito! Agora, deseja um PIN (apenas números) ou cadeia de caracteres (senha forte).\nEscreva 'pin' para PIN ou deixe em branco para gerar uma cadeia >> "
+                )
+                .lower()
+                .strip()
             )
-            .lower()
-            .strip()
-        )
 
-    while not (tamanho.isnumeric() and 100 >= int(tamanho) >= 6):
-        tamanho = input(
-            "Você quer que a senha tenha quantos dígitos? (min.: 6, recomendado: 12, max: 100) >> "
-        )
-        if not tamanho:
-            tamanho = 12
-            break
-    
-    tamanho = int(tamanho)
+        while not (tamanho.isnumeric() and 100 >= int(tamanho) >= 6):
+            tamanho = input(
+                "Você quer que a senha tenha quantos dígitos? (min.: 6, recomendado: 12, max: 100) >> "
+            )
+            if not tamanho:
+                tamanho = "12"
+
+        tamanho = int(tamanho)
 
     if usr == "pin":
         return "".join([str(randint(0, 9)) for _ in range(tamanho)])
@@ -88,7 +89,7 @@ def gerar_senha():
         return senha
 
 
-
 if __name__ == '__main__':
-    print(gerar_senha())
+    print("Auto:",gerar_senha(True))
+    print("SEM Auto:",gerar_senha(False))
     print(gerar_nickname())

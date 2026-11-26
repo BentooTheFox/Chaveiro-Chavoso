@@ -5,7 +5,7 @@ from chave_chevy import principal
 from chave_chevy import criacao
 # TODO from chave_chevy import edicao
 # TODO from chave_chevy import exclusao
-# TODO from chave_chevy import visualizacao
+from chave_chevy import visualizacao
 from chave_chevy.objetos.tela import Tela
 
 _setup_logger()
@@ -17,7 +17,7 @@ mapa = {
     Tela.PRINCIPAL: principal.iniciar_loop,
     # TODO Tela.DE_EDICAO: edicao.iniciar_loop,
     # TODO Tela.DE_EXCLUIR: exclusao.iniciar_loop,
-    # TODO Tela.DE_VISUALIZAR: visualizacao.iniciar_loop,
+    Tela.DE_VISUALIZAR: visualizacao.iniciar_loop,
     Tela.SAIR: 99
 }
 

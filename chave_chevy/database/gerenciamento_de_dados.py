@@ -54,9 +54,10 @@ def inserir_login(tupla_de_credenciais: tuple):
 
 def consultar_logins():
     cursor.execute(sql_queries.SELECIONAR_TUDO)
-    print("-- Seus perfis salvos:")
-    for idd, nome, senha in cursor.fetchall():
-        print(f"{idd} | {nome} | {senha}")
+    return [
+        {"id": idd, "nome": nome, "senha": senha}
+        for idd, nome, senha in cursor.fetchall()
+    ]
 
 
 def excluir_perfil(idd=None):
