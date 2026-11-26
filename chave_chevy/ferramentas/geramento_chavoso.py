@@ -1,6 +1,15 @@
 from string import digits
 from string import punctuation
 from string import ascii_letters
+from string import ascii_lowercase
+from random import choice
+from random import randint
+from random import shuffle
+
+try:
+    from .nick_list import words
+except:
+    from nick_list import words
 
 
 def loop_padrao_de_geracao(
@@ -32,9 +41,54 @@ def loop_padrao_de_geracao(
 
 # Gerar login completo com: identificador, nickname/login e senha
 def gerar_nickname():
-    return 'Bentoo the GOAT'
+    nick = ""
+
+    for i in range(2):
+        nick = nick + str(choice(words)).capitalize()
+
+    for i in range(2):
+        nick = nick + str(randint(0, 9))
+
+    return nick
+
 
 def gerar_senha():
-    # logica para criar uma senha/pin
-    return '1234abcd'
+    usr = None
+    tamanho = ""
 
+    while usr not in ("pin", "cadeia", ""):
+        usr = (
+            input(
+                "Perfeito! Agora, deseja um PIN (apenas números) ou cadeia de caracteres (senha forte).\nEscreva 'pin' para PIN ou deixe em branco para gerar uma cadeia >> "
+            )
+            .lower()
+            .strip()
+        )
+
+    while not (tamanho.isnumeric() and 100 >= int(tamanho) >= 6):
+        tamanho = input(
+            "Você quer que a senha tenha quantos dígitos? (min.: 6, recomendado: 12, max: 100) >> "
+        )
+        if not tamanho:
+            tamanho = 12
+            break
+    
+    tamanho = int(tamanho)
+
+    if usr == "pin":
+        return "".join([str(randint(0, 9)) for _ in range(tamanho)])
+
+    else:
+        senha = [choice(digits + ascii_letters + punctuation) for _ in range(tamanho)]
+
+        shuffle(senha)
+
+        senha = "".join(senha)
+
+        return senha
+
+
+
+if __name__ == '__main__':
+    print(gerar_senha())
+    print(gerar_nickname())

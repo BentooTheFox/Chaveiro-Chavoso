@@ -16,6 +16,9 @@ def consertar_recursivamente(caminho: Path):
         warning(aviso)
         print(aviso)
         consertar_recursivamente(caminho.parent)
+    
+    except Exception as e:
+        error(f"Não foi possível criar o caminho: {caminho.absolute()}. Razão: {e}")
 
 
 def tocar(caminho: Path):
@@ -36,3 +39,6 @@ def tocar(caminho: Path):
 
         caminho.touch()
         info("Pastas recursivas criadas com sucesso. Arquivo tocado também.")
+
+    except Exception as e:
+        error(f"Não foi possível criar o caminho até {caminho.absolute()}. Um erro desconhecido ocorreu: {e}")
