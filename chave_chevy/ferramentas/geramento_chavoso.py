@@ -1,7 +1,6 @@
 from string import digits
 from string import punctuation
 from string import ascii_letters
-from string import ascii_lowercase
 from random import choice
 from random import randint
 from random import shuffle
@@ -10,6 +9,13 @@ try:
     from .nick_list import words
 except:
     from nick_list import words
+
+
+PERGUNTAR_TIPO_DE_SENHA = """Perfeito! Agora... Que tipo de senha você quer?
+PIN (apenas números) ou cadeia de caracteres aleatórios?
+
+Para escolher PIN, escreva 'pin'; do contrário, deixe em branco.
+('pin'/EM BRANCO) >> """
 
 
 def loop_padrao_de_geracao(
@@ -46,10 +52,7 @@ def gerar_nickname():
     for i in range(2):
         nick = nick + str(choice(words)).capitalize()
 
-    for i in range(2):
-        nick = nick + str(randint(0, 9))
-
-    return nick
+    return nick + str(randint(10, 99))
 
 
 def gerar_senha(auto=False):
@@ -59,17 +62,11 @@ def gerar_senha(auto=False):
     if not auto:
 
         while usr not in ("pin", "cadeia", ""):
-            usr = (
-                input(
-                    "Perfeito! Agora, deseja um PIN (apenas números) ou cadeia de caracteres (senha forte).\nEscreva 'pin' para PIN ou deixe em branco para gerar uma cadeia >> "
-                )
-                .lower()
-                .strip()
-            )
+            usr = input(PERGUNTAR_TIPO_DE_SENHA).lower().strip()
 
-        while not (tamanho.isnumeric() and 100 >= int(tamanho) >= 6):
+        while not (tamanho.isnumeric() and 100 >= int(tamanho) >= 4):
             tamanho = input(
-                "Você quer que a senha tenha quantos dígitos? (min.: 6, recomendado: 12, max: 100) >> "
+                "Você quer que a senha tenha quantos dígitos? (min.: 4, recomendado: 12, max: 100) >> "
             )
             if not tamanho:
                 tamanho = "12"
@@ -89,7 +86,6 @@ def gerar_senha(auto=False):
         return senha
 
 
-if __name__ == '__main__':
-    print("Auto:",gerar_senha(True))
-    print("SEM Auto:",gerar_senha(False))
-    print(gerar_nickname())
+if __name__ == "__main__":
+    for i in range(30):
+        print("Nick:", gerar_nickname())

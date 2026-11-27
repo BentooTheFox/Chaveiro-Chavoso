@@ -2,22 +2,16 @@ from os import name, system
 from time import sleep
 from logging import warning, info, error, critical
 
-try: from objetos.tela import Tela
-except: from .objetos.tela import Tela
-clear = lambda: system("cls" if name == "nt" else "clear")
+try:
+    from objetos.tela import Tela
+    from ferramentas.artista_artoso import filtro_arco_iris, construir_coloracao, Estilos, Cores, RESET
+except:
+    from .objetos.tela import Tela
+    from .ferramentas.artista_artoso import filtro_arco_iris, construir_coloracao, Estilos, Cores, RESET
 
-OPCOES = [
-    ("Criar novo perfil", Tela.DE_CRIACAO),
-    ("Editar perfil existente", Tela.DE_EDICAO),
-    ("Visualizar perfis", Tela.DE_VISUALIZAR),
-    ("Excluir perfil", Tela.DE_EXCLUIR),
-    ("Estado quebrado de propósito", 9090)
-]
 
-info("Menu principal: Telas mapeadas")
 
-MENU = r"""
-                                                            
+BANNER = construir_coloracao(cor_do_texto=Cores.AMARELO, estilo=Estilos.NEGRITO) + r"""
  ,-----.,--.                             ,--.               
 '  .--./|  ,---.  ,--,--.,--.  ,--.,---. `--',--.--. ,---.  
 |  |    |  .-.  |' ,-.  | \  `'  /| .-. :,--.|  .--'| .-. | 
@@ -29,8 +23,21 @@ MENU = r"""
 |  |    |  .-.  |' ,-.  | \  `'  /| .-. |(  .-' | .-. |     
 '  '--'\|  | |  |\ '-'  |  \    / ' '-' '.-'  `)' '-' '     
  `-----'`--' `--' `--`--'   `--'   `---' `----'  `---'      
-Bentoo 🐾
 
+""" + filtro_arco_iris("Bentoo!! 🐾")
+
+
+
+OPCOES = [
+    ("Criar novo perfil", Tela.DE_CRIACAO),
+    ("Visualizar perfis", Tela.DE_VISUALIZAR),
+    ("Editar perfil existente", Tela.DE_EDICAO),
+    ("Excluir perfil", Tela.DE_EXCLUIR),
+]
+
+info("Menu principal: Telas mapeadas")
+
+MENU = BANNER + """
 Bem-Vind@ ao CHAVEIRO CHAVOSO!
 
 Com ele você pode criar nicks, senhas e logins inteiros!
@@ -43,6 +50,8 @@ Escolha uma opção para começar!
 ____________________________________
 O que vai ser, campeã(o)?"""
 
+
+clear = lambda: system("cls" if name == "nt" else "clear")
 
 def _formatar_menu_(menu=MENU):
     decoracao = "[{}] - {}\n"

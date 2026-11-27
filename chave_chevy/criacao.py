@@ -1,18 +1,18 @@
+import random
+import time
+from os import name, system
+
 try:
     from .objetos import tela
     from .ferramentas import geramento_chavoso
     from .database import gerenciamento_de_dados
-    from .ferramentas.enfeites import artista_artoso
+    from .ferramentas import artista_artoso
 
 except:
     from objetos import tela
     from ferramentas import geramento_chavoso
     from database import gerenciamento_de_dados
-    from ferramentas.enfeites import artista_artoso
-
-import random
-import time
-from os import name, system
+    from ferramentas import artista_artoso
 
 loop_padrao_de_geracao = geramento_chavoso.loop_padrao_de_geracao
 gerar_nickname = geramento_chavoso.gerar_nickname
@@ -36,9 +36,18 @@ ASCII_RAPOSA = r"""
        :---=+:=* -+==+- *=:+=---:
             --:*=::*#::=*:--
                 -+======:
-                :======:
+                :======:   Bentoo
                    :::
 """
+
+
+
+
+
+
+
+
+#region Strings & Deco
 
 welCUM = (
     "Olá! Bem-vindo ao menu de "
@@ -57,6 +66,18 @@ PROMPTS_PARA_INPUT_DE_CREDENCIAL = [
     "Agora, escolhe só {} legal, hein!",
 ]
 
+#endregion
+
+
+
+# Guigaz!
+
+
+
+
+#region Func
+
+clear = lambda: system("cls" if name == "nt" else "clear")
 
 def cancelar_operacao():
     print("Deseja mesmo cancelar a operação? Você irá retornar à tela PRINCIPAL")
@@ -71,11 +92,6 @@ def cancelar_operacao():
     if usr in ["sim", "s", "y", "yes", ""]:
         return True
     return False
-
-
-clear = lambda: system("cls" if name == "nt" else "clear")
-
-
 
 def criar_em_massa(quantidade = 25):
     for _ in range(quantidade):
@@ -157,3 +173,4 @@ def iniciar_loop():
     return tela.Tela.PRINCIPAL
 
 
+#endregion
