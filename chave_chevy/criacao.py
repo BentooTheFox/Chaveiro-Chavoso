@@ -7,12 +7,14 @@ try:
     from .ferramentas import geramento_chavoso
     from .database import gerenciamento_de_dados
     from .ferramentas import artista_artoso
+    from .seguridad import log_logoso
 
 except:
     from objetos import tela
     from ferramentas import geramento_chavoso
     from database import gerenciamento_de_dados
     from ferramentas import artista_artoso
+    from seguridad import log_logoso
 
 loop_padrao_de_geracao = geramento_chavoso.loop_padrao_de_geracao
 gerar_nickname = geramento_chavoso.gerar_nickname
@@ -79,6 +81,7 @@ PROMPTS_PARA_INPUT_DE_CREDENCIAL = [
 
 clear = lambda: system("cls" if name == "nt" else "clear")
 
+@log_logoso.run_function
 def cancelar_operacao():
     print("Deseja mesmo cancelar a operação? Você irá retornar à tela PRINCIPAL")
 
@@ -93,6 +96,7 @@ def cancelar_operacao():
         return True
     return False
 
+@log_logoso.run_function
 def criar_em_massa(quantidade = 25):
     for _ in range(quantidade):
         gerenciamento_de_dados.inserir_login(
@@ -100,6 +104,7 @@ def criar_em_massa(quantidade = 25):
             )
     gerenciamento_de_dados.salvar()
 
+@log_logoso.run_function
 def iniciar_loop():
     clear()
     print(

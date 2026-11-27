@@ -11,8 +11,10 @@ except:
     from .database import gerenciamento_de_dados
     from .ferramentas import artista_artoso, imprimir_tabela
     from .seguridad import log_logoso
-    from objetos.tela import Tela
+    from .objetos.tela import Tela
 
+
+#region Banner & Deco
 
 PETER = artista_artoso.construir_coloracao_rgb(r=233, g=138, b=158) + r"""
 ⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⣀⣀⡤⠤⠤⠤⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -39,13 +41,17 @@ Funciona assim:
 - Escolha um nick/perfil existente
 - O programa guiará você para que edite respectivamente: nick/perfil, senha.
 
-🦊< Você consegue!
+🦊 < Você consegue!
 
 [0] - Iniciar edição
 [1] - Voltar
 
 (Dê enter para começar ou 1 ou '/back' para voltar) >>> """
 
+#endregion
+
+
+#region Func
 
 @log_logoso.run_function
 def escolher_perfil():
@@ -137,3 +143,5 @@ def iniciar_loop():
                     else:
                         gerenciamento_de_dados.salvar()
                         continue
+
+#endregion

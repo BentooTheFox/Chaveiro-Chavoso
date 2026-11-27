@@ -5,9 +5,11 @@ from logging import warning, info, error, critical
 try:
     from objetos.tela import Tela
     from ferramentas.artista_artoso import filtro_arco_iris, construir_coloracao, Estilos, Cores, RESET
+    from seguridad import log_logoso
 except:
     from .objetos.tela import Tela
     from .ferramentas.artista_artoso import filtro_arco_iris, construir_coloracao, Estilos, Cores, RESET
+    from .seguridad import log_logoso
 
 
 
@@ -52,7 +54,7 @@ O que vai ser, campeã(o)?"""
 
 
 clear = lambda: system("cls" if name == "nt" else "clear")
-
+@log_logoso.run_function
 def _formatar_menu_(menu=MENU):
     decoracao = "[{}] - {}\n"
     __formatacao__ = []
