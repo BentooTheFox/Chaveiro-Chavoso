@@ -13,6 +13,7 @@ except:
     from .ferramentas.imprimir_tabela import imprimir_tabela
     from .seguridad import log_logoso
 
+logger = log_logoso._setup_logger()
 
 TSU_ASCII = """
                                                                
@@ -51,6 +52,7 @@ TSU_ASCII = """
                                                                
 
 """
+
 
 @log_logoso.run_function
 def iniciar_loop():

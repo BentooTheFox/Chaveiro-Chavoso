@@ -11,6 +11,7 @@ except:
     from .ferramentas.artista_artoso import filtro_arco_iris, construir_coloracao, Estilos, Cores, RESET
     from .seguridad import log_logoso
 
+log_logoso._setup_logger()
 
 
 BANNER = construir_coloracao(cor_do_texto=Cores.AMARELO, estilo=Estilos.NEGRITO) + r"""
@@ -54,6 +55,8 @@ O que vai ser, campeã(o)?"""
 
 
 clear = lambda: system("cls" if name == "nt" else "clear")
+
+
 @log_logoso.run_function
 def _formatar_menu_(menu=MENU):
     decoracao = "[{}] - {}\n"

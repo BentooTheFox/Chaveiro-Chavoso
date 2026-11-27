@@ -12,6 +12,7 @@ except:
     from .ferramentas import artista_artoso, imprimir_tabela
     from .seguridad import log_logoso
     from .objetos.tela import Tela
+log_logoso._setup_logger()
 
 
 #region Banner & Deco

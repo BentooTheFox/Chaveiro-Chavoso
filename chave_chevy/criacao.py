@@ -15,6 +15,7 @@ except:
     from database import gerenciamento_de_dados
     from ferramentas import artista_artoso
     from seguridad import log_logoso
+log_logoso._setup_logger()
 
 loop_padrao_de_geracao = geramento_chavoso.loop_padrao_de_geracao
 gerar_nickname = geramento_chavoso.gerar_nickname
