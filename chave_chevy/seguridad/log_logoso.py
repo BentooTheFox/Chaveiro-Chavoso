@@ -1,9 +1,9 @@
-import logging
+import logging, pathlib
 
 logger = logging.getLogger(__name__)
 
 LEVEL = logging.INFO
-FILE_NAME = "LOG.txt"
+FILE_NAME = pathlib.Path(__file__).parents[2] / "LOG.txt"
 _LOG_TIME_FORMAT = "%d/%m/%Y - %H:%M:%S"
 _LOG_MESSAGE_FORMAT = """%(levelname)s - %(module)s.%(funcName)s
     Mensagem: %(message)s
