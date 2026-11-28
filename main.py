@@ -11,6 +11,9 @@ from chave_chevy.objetos.tela import Tela
 
 _setup_logger()
 
+clear = lambda: system("cls" if name=='nt' else "clear")
+
+
 
 mapa = {
     Tela.PRINCIPAL: principal.iniciar_loop,
@@ -22,7 +25,7 @@ mapa = {
 }
 
 ESTADO = Tela.PRINCIPAL
-
+# clear()
 # Mapeamento
 while ESTADO != Tela.SAIR:
     funcao = mapa[ESTADO]
@@ -34,7 +37,7 @@ while ESTADO != Tela.SAIR:
     else:
         print("Opção inválida ou quebrada.")
         sleep(1)
-        system("cls" if name=='nt' else "clear")
+        clear()
         ESTADO = Tela.PRINCIPAL
 
 print("Bye!")

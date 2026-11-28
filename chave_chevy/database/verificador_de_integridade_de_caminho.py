@@ -7,7 +7,7 @@ def consertar_recursivamente(caminho: Path):
         print("Tentando criar", caminho.name)
         caminho.mkdir()
 
-        info("Pasta parente criada:", caminho.name)
+        info("Pasta parente criada: %s" % caminho.name)
 
         return caminho
 
@@ -29,7 +29,7 @@ def tocar(caminho: Path):
 
     try:
         caminho.touch()
-        info(caminho.name, "tocado com sucesso!")
+        info(f"{caminho.name} tocado com sucesso!")
 
     except FileNotFoundError:
         warning("Iniciando sequencia de vapo")
